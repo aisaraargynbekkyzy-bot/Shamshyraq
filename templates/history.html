@@ -1,0 +1,448 @@
+﻿<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менің тарихым - SHAMSHYRAQ</title>
+    <style>
+        @media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+    .card p {
+        font-size: 16px;
+    }
+    .card img {
+        max-width: 100%;
+    }
+    .navbar {
+        padding: 15px 30px;
+    }
+    .navbar .nav-links a {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin: 10px 0;
+    }
+    .container {
+        padding: 20px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    footer .logo-area, footer > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
+    .card p {
+        font-size: 14px;
+    }
+    #music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #FFE4E0;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(135deg, #B22222, #D84040);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(178, 34, 34, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #B22222;
+            text-decoration: none;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #B22222;
+        }
+
+        .logout-with-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+            text-decoration: none;
+            color: #B22222;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-with-text:hover {
+            color: #D84040;
+            transform: translateY(-1px);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 36px;
+            color: #B22222;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .history-stats {
+            background-color: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            background-color: #FFE4E0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 32px;
+            color: #B22222;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .history-list {
+            background-color: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .history-item {
+            background-color: #FFF6F5;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #B22222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .history-item:hover {
+            transform: translateX(5px);
+            background-color: #FFE4E0;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .item-type {
+            display: inline-block;
+            background-color: #B22222;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-right: 10px;
+        }
+
+        .item-date {
+            color: #777;
+            font-size: 14px;
+        }
+
+        .item-actions a {
+            background-color: #B22222;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .item-actions a:hover {
+            background-color: #8B0000;
+        }
+
+        .empty-history {
+            text-align: center;
+            padding: 50px;
+            color: #777;
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: #666;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #444;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 40px 60px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+            margin-top: 50px;
+        }
+
+        footer .logo-area {
+            max-width: 300px;
+        }
+
+        footer .logo-area img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        footer h3 {
+            color: #B22222;
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer ul li {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        footer a:hover {
+            color: #B22222;
+        }
+
+        footer .social {
+            margin-top: 10px;
+        }
+
+        footer .social a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Баннер приветствия -->
+    {% if user %}
+    <div class="welcome-banner">
+        Сәлем, {{ user.name }}! Менің тарихым
+    </div>
+    {% endif %}
+
+    <nav class="navbar">
+        <a href="/" class="logo">SHAMSHYRAQ</a>
+        <div class="nav-links">
+            <a href="/about">Біз туралы</a>
+            <a href="/hope">Үміт бағы</a>
+            <a href="/voices">Дауыстар алаңы</a>
+            <a href="/history" style="color: #B22222; font-weight: bold;">Менің тарихым</a>
+            <a href="/logout" class="logout-with-text" title="Шығу">
+                Шығу 🚪
+            </a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h1 class="page-title">Менің тарихым</h1>
+
+        <!-- Статистика -->
+        <div class="history-stats">
+            <h2 style="color: #B22222; margin-bottom: 20px;">Статистика</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">{{ view_history|length }}</div>
+                    <div class="stat-label">Барлық қаралғандар</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        {% set exercise_count = view_history|selectattr('item_type', 'equalto', 'exercise')|list|length %}
+                        {{ exercise_count }}
+                    </div>
+                    <div class="stat-label">Жаттығулар</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">
+                        {% set advice_count = view_history|selectattr('item_type', 'equalto', 'advice')|list|length %}
+                        {{ advice_count }}
+                    </div>
+                    <div class="stat-label">Кеңестер</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Список истории -->
+        <div class="history-list">
+            <h2 style="color: #B22222; margin-bottom: 20px;">Соңғы қаралғандар</h2>
+
+            {% if view_history %}
+                {% for item in view_history %}
+                <div class="history-item">
+                    <div class="item-info">
+                        <div class="item-name">{{ item.item_name }}</div>
+                        <div>
+                            <span class="item-type">
+                                {% if item.item_type == 'exercise' %}
+                                    Жаттығу
+                                {% else %}
+                                    Кеңес
+                                {% endif %}
+                            </span>
+                            <span class="item-date">{{ item.viewed_at }}</span>
+                        </div>
+                    </div>
+                    <div class="item-actions">
+                        <a href="/{{ item.item_type }}/{{ item.item_id }}">Қайта қарау</a>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="empty-history">
+                    <p>Әлі ешнәрсе қаралмаған. <a href="/hope" style="color: #B22222; text-decoration: none;">Үміт бағына өтіп</a> жаттығулар мен кеңестерді көріңіз!</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="back-link">
+            <a href="/voices" class="back-btn">← Дауыстар алаңына оралу</a>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <div class="logo-area">
+            <img src="/static/shamlogo.jpeg" alt="Sham">
+        </div>
+        <div>
+            <h3>Мәзір</h3>
+            <ul>
+                <li><a href="/">Басты бет</a></li>
+                <li><a href="/about">Біз туралы</a></li>
+                <li><a href="/hope">Үміт бағы</a></li>
+                <li><a href="/voices">Дауыстар алаңы</a></li>
+                <li><a href="/history">Менің тарихым</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Контакты</h3>
+            <p>+7 778 603 10 56</p>
+            <p>Абай көшесі 76, 501 кабинет</p>
+            <div class="social">
+                <a href="#"><img src="/static/logoin.jpeg" alt="Instagram" width="32"></a>
+                <span>sham.komek</span><br>
+                <a href="#"><img src="/static/logopo.jpeg" alt="Email" width="24"></a>
+                <span>aisaraargynbekkyzy@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

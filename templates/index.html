@@ -1,0 +1,590 @@
+﻿<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAMSHYRAQ - Басты бет</title>
+    <style>
+@media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+    .card p {
+        font-size: 16px;
+    }
+    .card img {
+        max-width: 100%;
+    }
+    .navbar {
+        padding: 15px 30px;
+    }
+    .navbar .nav-links a {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin: 10px 0;
+    }
+    .container {
+        padding: 20px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    footer .logo-area, footer > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
+    .card p {
+        font-size: 14px;
+    }
+    #music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #FFE4E0;
+        }
+
+        /* Баннер приветствия */
+        .welcome-banner {
+            background: linear-gradient(135deg, #B22222, #D84040);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(178, 34, 34, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #B22222;
+            text-decoration: none;
+        }
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: #B22222;
+        }
+
+        /* значок пользователя */
+        .navbar .user-icon {
+            margin-left: 40px;
+            font-size: 26px;
+            color: #B22222;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .navbar .user-icon:hover {
+            color: #D84040;
+            transform: scale(1.15);
+        }
+
+        .user-welcome {
+            margin-left: 30px;
+            color: #B22222;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* Стиль для кнопки выхода с текстом */
+        .logout-with-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+            text-decoration: none;
+            color: #B22222;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-with-text:hover {
+            color: #D84040;
+            transform: translateY(-1px);
+        }
+
+        .container {
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: #FFF6F5;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            padding: 30px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .card h2 {
+            font-size: 28px;
+            color: #B22222;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-style: italic;
+        }
+        .card p {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .card img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 40px 60px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+        }
+        footer .logo-area {
+            max-width: 300px;
+        }
+        footer .logo-area img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        footer h3 {
+            color: #B22222;
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+        footer a:hover {
+            color: #B22222;
+        }
+        footer .social {
+            margin-top: 10px;
+        }
+        footer .social a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 30px;
+            color: #B22222;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        #music-btn:hover {
+            transform: scale(1.1);
+            background-color: #FFD5D0;
+        }
+
+        /* Модальное окно */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .modal-content h2 {
+            color: #B22222;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        .modal-content p {
+            color: #444;
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .modal-button {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal-button.login {
+            background-color: #B22222;
+            color: white;
+        }
+
+        .modal-button.login:hover {
+            background-color: #8B0000;
+            transform: translateY(-2px);
+        }
+
+        .modal-button.register {
+            background-color: white;
+            color: #B22222;
+            border: 2px solid #B22222;
+        }
+
+        .modal-button.register:hover {
+            background-color: #FFE4E0;
+            transform: translateY(-2px);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            color: #666;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .close-modal:hover {
+            color: #B22222;
+        }
+
+        /* Оверлей для всего сайта */
+        .site-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1500;
+        }
+    </style>
+</head>
+<body>
+    <!-- Модальное окно для авторизации (ТОЛЬКО ДЛЯ НЕАВТОРИЗОВАННЫХ) -->
+    {% if not user %}
+    <div id="authModal" class="auth-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeAuthModal()">×</button>
+            <h2>Кіру немесе тіркелу</h2>
+            <p>Бұл сайттың толық мүмкіндіктерін пайдалану үшін кіру немесе тіркелу қажет. SHAMSHYRAQ платформасы мұғалімдерге арналған психологиялық қолдау және даму мүмкіндіктерін ұсынады.</p>
+            <div class="modal-buttons">
+                <a href="/login" class="modal-button login">Кіру</a>
+                <a href="/register" class="modal-button register">Тіркелу</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Оверлей для блокировки сайта -->
+    <div id="siteOverlay" class="site-overlay" onclick="closeAuthModal()"></div>
+    {% endif %}
+
+    <!-- Баннер приветствия для авторизованных пользователей -->
+    {% if user %}
+    <div class="welcome-banner">
+        Сәлем, {{ user.name }}! Қош келдіңіз!
+    </div>
+    {% endif %}
+
+    <nav class="navbar">
+        <a href="/" class="logo">SHAMSHYRAQ</a>
+        <div class="nav-links">
+            {% if user %}
+                <!-- ДЛЯ АВТОРИЗОВАННЫХ: нормальные ссылки -->
+                <a href="/about">Біз туралы</a>
+                <a href="/hope">Үміт бағы</a>
+                <a href="/voices">Дауыстар алаңы</a>
+                <a href="/history" style="margin-left: 20px; color: #B22222; text-decoration: none; font-weight: bold;">
+                    Менің тарихым
+                </a>
+                <a href="/logout" class="logout-with-text" title="Шығу">
+                    Шығу 🚪
+                </a>
+            {% else %}
+                <!-- ДЛЯ НЕАВТОРИЗОВАННЫХ: ссылки с модальным окном -->
+                <a href="#" onclick="showAuthModal(event)" class="protected-link">Біз туралы</a>
+                <a href="#" onclick="showAuthModal(event)" class="protected-link">Үміт бағы</a>
+                <a href="#" onclick="showAuthModal(event)" class="protected-link">Дауыстар алаңы</a>
+                <a href="#" onclick="showAuthModal(event)" class="protected-link" style="margin-left: 20px; color: #B22222; text-decoration: none; font-weight: bold;">
+                    Менің тарихым
+                </a>
+                <a href="/login" class="user-icon" title="Кіру">👤</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card">
+            <h2>Жарығыңды сөндірме — сен SHAMSHYRAQ</h2>
+            <p>Жарығыңды сөндірме — сен SHAMSHYRAQ — бұл мұғалімдерді қолдауға арналған алаң.</p>
+            <img src="/static/1.1foto.jpeg" alt="...">
+        </div>
+
+        <div class="card">
+            <h2>Сен болашаққа жол көрсететін SHAMSHYRAQ</h2>
+            <p>Мұғалім — елдің болашағына сәуле түсіретін шамшырақ. Біз сізге жарқын болашаққа жол ашуға көмектесеміз.</p>
+            <img src="/static/1.2foto.jpg" alt="Сен болашаққа жол көрсететін">
+        </div>
+
+        <div class="card">
+            <h2>Мұғалім — адам жанына SHAMSHYRAQ</h2>
+            <p>Әрбір мұғалім — адам жанының тереңіне бойлайтын, білім мен даналықты тарататын тұлға.</p>
+            <img src="/static/1.3foto.jpg" alt="Мұғалім адам жанына">
+        </div>
+    </div>
+
+    <footer>
+        <div class="logo-area">
+            <img src="/static/shamlogo.jpeg" alt="Sham">
+        </div>
+        <div>
+            <h3>Мәзір</h3>
+            <ul>
+                <li><a href="/">Басты бет</a></li>
+                <li>
+                    {% if user %}
+                        <a href="/about">Біз туралы</a>
+                    {% else %}
+                        <a href="#" onclick="showAuthModal(event)" class="protected-link">Біз туралы</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if user %}
+                        <a href="/hope">Үміт бағы</a>
+                    {% else %}
+                        <a href="#" onclick="showAuthModal(event)" class="protected-link">Үміт бағы</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if user %}
+                        <a href="/voices">Дауыстар алаңы</a>
+                    {% else %}
+                        <a href="#" onclick="showAuthModal(event)" class="protected-link">Дауыстар алаңы</a>
+                    {% endif %}
+                </li>
+                <li>
+                    {% if user %}
+                        <a href="/history">Менің тарихым</a>
+                    {% else %}
+                        <a href="#" onclick="showAuthModal(event)" class="protected-link">Менің тарихым</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h3>Контакты</h3>
+            <p>+7 778 603 10 56</p>
+            <p>Абай көшесі 76, 501 кабинет</p>
+            <div class="social">
+                <a href="#"><img src="/static/logoin.jpeg" alt="Instagram" width="32"></a>
+                <span>sham.komek</span><br>
+                <a href="#"><img src="/static/logopo.jpeg" alt="Email" width="24"></a>
+                <span>aisaraargynbekkyzy@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <button id="music-btn">🎵</button>
+    <audio id="background-music" loop>
+        <source src="/static/audiobq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    // 🎵 Музыка сохраняет состояние между страницами
+    const musicBtn = document.getElementById('music-btn');
+    const music = document.getElementById('background-music');
+
+    // Загружаем состояние
+    let savedPlayState = localStorage.getItem("musicPlaying") === "true";
+    let savedTime = localStorage.getItem("musicTime");
+
+    // Если раньше музыка играла — продолжаем
+    if (savedPlayState) {
+        if (savedTime) {
+            music.currentTime = parseFloat(savedTime);
+        }
+        music.play().then(() => {
+            musicBtn.textContent = "🎵";
+        }).catch(() => {});
+    } else {
+        musicBtn.textContent = "🔇";
+    }
+
+    // Кнопка включить/выключить музыку
+    musicBtn.addEventListener('click', () => {
+        if (music.paused) {
+            music.play();
+            musicBtn.textContent = "🎵";
+            localStorage.setItem("musicPlaying", "true");
+        } else {
+            music.pause();
+            musicBtn.textContent = "🔇";
+            localStorage.setItem("musicPlaying", "false");
+        }
+    });
+
+    // Каждые 0.5 сек сохраняем прогресс
+    setInterval(() => {
+        if (!music.paused) {
+            localStorage.setItem("musicTime", music.currentTime.toString());
+        }
+    }, 500);
+
+
+    // ---------- МОДАЛЬНОЕ ОКНО (ВАШ КОД) ----------
+    function showAuthModal(event) {
+        if (event) event.preventDefault();
+        document.getElementById('siteOverlay').style.display = 'block';
+        document.getElementById('authModal').style.display = 'flex';
+    }
+
+    function closeAuthModal() {
+        document.getElementById('siteOverlay').style.display = 'none';
+        document.getElementById('authModal').style.display = 'none';
+    }
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') closeAuthModal();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        {% if not user %}
+            setTimeout(showAuthModal, 2000);
+
+            const protectedLinks = document.querySelectorAll('.protected-link');
+            protectedLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showAuthModal();
+                });
+            });
+        {% endif %}
+    });
+
+    function toggleScrollLock(lock) {
+        document.body.style.overflow = lock ? 'hidden' : 'auto';
+    }
+
+    {% if not user %}
+    const modalObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'style') {
+                const modal = document.getElementById('authModal');
+                toggleScrollLock(modal.style.display === 'flex');
+            }
+        });
+    });
+
+    const modalElement = document.getElementById('authModal');
+    if (modalElement) {
+        modalObserver.observe(modalElement, { attributes: true });
+    }
+    {% endif %}
+</script>
+
+</body>
+</html>

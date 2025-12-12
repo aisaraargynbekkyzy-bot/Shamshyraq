@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAMSHYRAQ - Тіркелу</title>
+    <style>
+        @media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+    .card p {
+        font-size: 16px;
+    }
+    .card img {
+        max-width: 100%;
+    }
+    .navbar {
+        padding: 15px 30px;
+    }
+    .navbar .nav-links a {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin: 10px 0;
+    }
+    .container {
+        padding: 20px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    footer .logo-area, footer > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
+    .card p {
+        font-size: 14px;
+    }
+    #music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #FFE4E0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #B22222;
+            text-decoration: none;
+        }
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: #B22222;
+        }
+        .navbar .register-icon {
+            margin-left: 30px;
+            font-size: 22px;
+            color: #B22222;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .navbar .register-icon:hover {
+            transform: scale(1.2);
+            color: #D84040;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #FFF6F5;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: #B22222;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        .login-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .login-container input:focus {
+            border-color: #B22222;
+            outline: none;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #B22222;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-container button:hover {
+            background-color: #D84040;
+        }
+        .error-message {
+            color: red;
+            background-color: #FFE6E6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid red;
+        }
+        .success-message {
+            color: green;
+            background-color: #E6FFE6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid green;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 40px 60px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+        }
+        footer .logo-area img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        footer h3 {
+            color: #B22222;
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        footer a {
+            color: #333;
+            text-decoration: none;
+        }
+        footer a:hover {
+            color: #B22222;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 8px;
+        }
+
+        #music-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            font-size: 30px;
+            color: #B22222;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            z-index: 1000;
+        }
+        #music-btn:hover {
+            transform: scale(1.1);
+            background-color: #FFD5D0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">SHAMSHYRAQ</a>
+        <div class="nav-links">
+            <a href="/about">Біз туралы</a>
+            <a href="/hope">Үміт бағы</a>
+            <a href="/voices">Дауыстар алаңы</a>
+            <a href="/login" class="register-icon" title="Кіру">👤</a>
+        </div>
+    </nav>
+
+    <div class="login-container">
+        <h2>Тіркелу</h2>
+
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        {% if success %}
+        <div class="success-message">{{ success }}</div>
+        {% endif %}
+
+        <form method="post" action="/register">
+            <label for="fullname">Аты-жөні:</label>
+            <input type="text"
+                   id="fullname"
+                   name="name"
+                   placeholder="Аты-жөніңіз"
+                   value="{{ name | default('') }}"
+                   required>
+
+            <label for="email">Электронды пошта:</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   placeholder="example@gmail.com"
+                   value="{{ email | default('') }}"
+                   required>
+
+            <label for="password">Құпия сөз:</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   placeholder="••••••••"
+                   minlength="6"
+                   required>
+
+            <button type="submit">Тіркелу</button>
+        </form>
+
+        <p style="margin-top: 20px;">Тіркелгіңіз бар ма? <a href="/login" style="color: #B22222;">Кіру</a></p>
+    </div>
+
+    <footer>
+        <div class="logo-area">
+            <img src="/static/shamlogo.jpeg" alt="Sham">
+        </div>
+        <div>
+            <h3>Мәзір</h3>
+            <ul>
+                <li><a href="/">Басты бет</a></li>
+                <li><a href="/about">Біз туралы</a></li>
+                <li><a href="/hope">Үміт бағы</a></li>
+                <li><a href="/voices">Дауыстар алаңы</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>Контакты</h3>
+            <p>+7 778 603 10 56</p>
+            <p>Абай көшесі 76, 501 кабинет</p>
+        </div>
+    </footer>
+
+    <button id="music-btn">🎵</button>
+    <audio id="background-music" loop>
+        <source src="/static/audiobq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musicBtn = document.getElementById('music-btn');
+        const music = document.getElementById('background-music');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '🔇';
+            } else {
+                music.play();
+                musicBtn.textContent = '🎵';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>

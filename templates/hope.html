@@ -1,0 +1,557 @@
+﻿<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAMSHYRAQ - Дауыстар алаңы</title>
+    <style>
+        @media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+    .card p {
+        font-size: 16px;
+    }
+    .card img {
+        max-width: 100%;
+    }
+    .navbar {
+        padding: 15px 30px;
+    }
+    .navbar .nav-links a {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin: 10px 0;
+    }
+    .container {
+        padding: 20px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    footer .logo-area, footer > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
+    .card p {
+        font-size: 14px;
+    }
+    #music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #FFE4E0;
+        }
+
+        /* --- WELCOME BANNER --- */
+        .welcome-banner {
+            background: linear-gradient(135deg, #B22222, #D84040);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(178, 34, 34, 0.3);
+        }
+
+        /* значок пользователя */
+        .user-icon {
+            margin-left: 40px;
+            font-size: 26px;
+            color: #B22222;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .user-icon:hover {
+            color: #D84040;
+            transform: scale(1.15);
+        }
+
+        .user-welcome {
+            margin-left: 30px;
+            color: #B22222;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* Стиль для кнопки выхода с текстом */
+        .logout-with-text {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-left: 20px;
+            text-decoration: none;
+            color: #B22222;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .logout-with-text:hover {
+            color: #D84040;
+            transform: translateY(-1px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #B22222;
+            text-decoration: none;
+        }
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;  /* ДОБАВЬТЕ ЭТУ СТРОКУ */
+        }
+        .navbar .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .navbar .nav-links a:hover {
+            color: #B22222;
+        }
+        .main-header {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 42px;
+            color: #B22222;
+        }
+        .grid-container-wide {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 0 50px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .grid-item-wide {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .grid-item-wide:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+        .grid-item-wide img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .grid-item-wide h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .grid-item-wide p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .text-block {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin: 50px auto;
+            max-width: 1000px;
+            text-align: center;
+        }
+        .text-block h2 {
+            font-size: 32px;
+            color: #B22222;
+            margin-bottom: 20px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            max-width: 800px;
+            margin: 20px auto 10px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .methods-title {
+            text-align: center;
+            font-size: 38px;
+            color: #333;
+            margin: 20px 0 30px;
+        }
+        .methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 0 20px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+         }
+        .method-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            text-align: left;
+        }
+        .method-item .icon {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #B22222;
+        }
+        .method-item h4 {
+            font-size: 18px;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .method-item p {
+            font-size: 15px;
+            color: #555;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 40px 60px;
+            color: #333;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 16px;
+            border-top: 1px solid #ccc;
+        }
+        footer .logo-area {
+            max-width: 300px;
+        }
+        footer .logo-area img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        footer h3 {
+            color: #B22222;
+            font-style: italic;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        footer ul li {
+            margin-bottom: 8px;
+        }
+        footer a {
+            text-decoration: none;
+            color: #333;
+        }
+        footer a:hover {
+            color: #B22222;
+        }
+        footer .social {
+            margin-top: 10px;
+        }
+        footer .social a {
+            margin-right: 10px;
+            text-decoration: none;
+        }
+
+        /* --- Музыка батырмасы --- */
+       #music-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: none;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        font-size: 30px;
+        color: #B22222;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+        z-index: 1000;
+    }
+    #music-btn:hover {
+        transform: scale(1.1);
+        background-color: #FFD5D0;
+    }
+
+    /* Стили для списка упражнений и советов */
+    .data-list {
+        text-align: left;
+        margin-top: 15px;
+        width: 100%;
+    }
+    .data-list p {
+        font-weight: bold;
+        color: #B22222;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    .data-list ul {
+        padding-left: 20px;
+        margin: 0;
+    }
+    .data-list li {
+        margin-bottom: 8px;
+        padding: 5px 0;
+        border-bottom: 1px dashed #eee;
+    }
+    .data-list li:last-child {
+        border-bottom: none;
+    }
+    .data-list a {
+        color: #B22222;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    .data-list a:hover {
+        color: #8B0000;
+        text-decoration: underline;
+    }
+    .more-items {
+        color: #666;
+        font-style: italic;
+        margin-top: 10px;
+        padding-left: 20px;
+    }
+    </style>
+</head>
+<body>
+    <!-- Баннер приветствия для авторизованных пользователей -->
+    {% if user %}
+    <div class="welcome-banner">
+        Сәлем, {{ user.name }}! Қош келдіңіз!
+    </div>
+    {% endif %}
+
+    <nav class="navbar">
+        <a href="/" class="logo">SHAMSHYRAQ</a>
+        <div class="nav-links">
+            <a href="/about">Біз туралы</a>
+            <a href="/hope">Үміт бағы</a>
+            <a href="/voices">Дауыстар алаңы</a>
+            <a href="/history" style="margin-left: 20px; color: #B22222; text-decoration: none; font-weight: bold;">
+                    Менің тарихым
+            </a>
+
+            {% if user %}
+                <a href="/logout" class="logout-with-text" title="Шығу">
+                    Шығу 🚪
+                </a>
+            {% else %}
+                <a href="/login" class="user-icon" title="Кіру">👤</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <h1 class="main-header">Күйзелістен шығудың қарапайым жолдары</h1>
+
+    <div class="grid-container-wide">
+        <div class="grid-item-wide">
+            <a href="/exercise" style="text-decoration:none; color:inherit;">
+                <img src="/static/4.1foto.jpg" alt="Күйзелістен шығудың қарапайым жаттығулары">
+                <h3>Кәсіби күйзелістен шығудың қарапайым жаттығулары</h3>
+            </a>
+            {% if exercises %}
+            <div class="data-list">
+                <p><strong>Қолжетімді жаттығулар:</strong> {{ exercises|length }}</p>
+                <ul>
+                    {% for exercise in exercises[:3] %}
+                    <li><a href="/exercise/{{ exercise.id }}">{{ exercise.name }}</a></li>
+                    {% endfor %}
+                    {% if exercises|length > 3 %}
+                    <li class="more-items">... және тағы {{ exercises|length - 3 }} жаттығу</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        <div class="grid-item-wide">
+            <a href="/advice" style="text-decoration:none; color:inherit;">
+                <img src="/static/2.1foto.jpg" alt="Психологтардың кеңестері">
+                <h3>Психологтардың кеңестері</h3>
+            </a>
+            {% if advice_list %}
+            <div class="data-list">
+                <p><strong>Қолжетімді кеңестер:</strong> {{ advice_list|length }}</p>
+                <ul>
+                    {% for advice in advice_list[:3] %}
+                    <li><a href="/advice/{{ advice.id }}">{{ advice.name }}</a></li>
+                    {% endfor %}
+                    {% if advice_list|length > 3 %}
+                    <li class="more-items">... және тағы {{ advice_list|length - 3 }} кеңес</li>
+                    {% endif %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="video-container">
+        <iframe src="/static/1video.mp4" frameborder="0"></iframe>
+    </div>
+
+    <h2 class="methods-title">Демалыс пен сергектік беретін әдістер</h2>
+
+    <div class="methods-grid">
+        <div class="method-item"><span class="icon">&#128337;</span><div><h4>Қысқа үзілістер жасаңыз</h4><p>Жұмыс арасында 5-10 минуттық үзілістер жасаңыз.</p></div></div>
+        <div class="method-item"><span class="icon">&#127793;</span><div><h4>Табиғатта серуендеу</h4><p>Таза ауада серуендеу миға тыныштық сыйлайды.</p></div></div>
+        <div class="method-item"><span class="icon">&#128071;</span><div><h4>Терең тыныс алыңыз</h4><p>Тыныс алу жаттығулары жүйкені тыныштандырады.</p></div></div>
+        <div class="method-item"><span class="icon">&#128134;</span><div><h4>Жеңіл жаттығулар</h4><p>Жаяу жүру, созылу, гимнастика пайдалы.</p></div></div>
+        <div class="method-item"><span class="icon">&#127925;</span><div><h4>Музыка тыңдау</h4><p>Жайдарлы музыка көңіл-күйді көтереді.</p></div></div>
+        <div class="method-item"><span class="icon">&#128065;</span><div><h4>Көз жаттығулары</h4><p>Көз бұлшықеттерін демалдыру үшін жаттығу жасаңыз.</p></div></div>
+    </div>
+
+    <div class="grid-container-wide">
+        <div class="grid-item-wide">
+            <p>Мұғалім үшін әр күн – жаңа сынақ...</p>
+            <img src="/static/4.2foto.jpg" alt="Күйзелістен шығудың қарапайым жаттығулары">
+        </div>
+        <div class="grid-item-wide">
+            <p>Мұғалімдердің күнделікті өміріндегі қиындықтар...</p>
+            <img src="/static/2.1foto.jpg" alt="Күйзелістен шығудың қарапайым жаттығулары">
+        </div>
+        <div class="grid-item-wide">
+            <p>Біз мұғалімнің мықты әрі бақытты болғанын қалаймыз.</p>
+            <img src="/static/4.3foto.jpg" alt="Күйзелістен шығудың қарапайым жаттығулары">
+        </div>
+    </div>
+
+    <div class="text-block">
+        <h2>Бұл кеңестер мұғалімге тек кәсіби салада ғана емес, жеке өмірде де пайдалы болмақ.</h2>
+    </div>
+
+    <footer>
+        <div class="logo-area">
+            <img src="/static/shamlogo.jpeg" alt="Sham">
+        </div>
+
+        <div>
+            <h3>Мәзір</h3>
+            <ul>
+                <li><a href="/">Басты бет</a></li>
+                <li><a href="/about">Біз туралы</a></li>
+                <li><a href="/hope">Үміт бағы</a></li>
+                <li><a href="/voices">Дауыстар алаңы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div id="contact">
+            <h3>Контакты</h3>
+            <p>+7 778 603 10 56</p>
+            <p>Абай көшесі 76, 501 кабинет</p>
+            <div class="social">
+                <a href="#"><img src="/static/logoin.jpeg" alt="Instagram" width="32"></a>
+                <span>sham.komek</span>
+                <br>
+                <a href="#"><img src="/static/logopo.jpeg" alt="Email" width="24"></a>
+                <span>aisaraargynbekkyzy@gmail.com</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 🎵 Музыка батырмасы -->
+     <button id="music-btn">🎵</button>
+    <audio id="background-music" loop>
+        <source src="/static/audiobq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+    const musicBtn = document.getElementById('music-btn');
+    const music = document.getElementById('background-music');
+
+    let savedPlayState = localStorage.getItem("musicPlaying") === "true";
+    let savedTime = localStorage.getItem("musicTime");
+
+    if (savedPlayState) {
+        music.currentTime = savedTime ? parseFloat(savedTime) : 0;
+        music.play().then(() => {
+            musicBtn.textContent = "🎵";
+        }).catch(() => {});
+    }
+
+    musicBtn.addEventListener('click', () => {
+        if (music.paused) {
+            music.play();
+            musicBtn.textContent = "🎵";
+            localStorage.setItem("musicPlaying", "true");
+        } else {
+            music.pause();
+            musicBtn.textContent = "🔇";
+            localStorage.setItem("musicPlaying", "false");
+        }
+    });
+
+    setInterval(() => {
+        if (!music.paused) {
+            localStorage.setItem("musicTime", music.currentTime.toString());
+        }
+    }, 500);
+</script>
+
+</body>
+</html>

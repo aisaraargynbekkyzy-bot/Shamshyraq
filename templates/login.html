@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHAMSHYRAQ - Кіру</title>
+    <style>
+        @media (max-width: 1024px) {
+    .container {
+        padding: 30px;
+        max-width: 90%;
+    }
+    .card h2 {
+        font-size: 24px;
+    }
+    .card p {
+        font-size: 16px;
+    }
+    .card img {
+        max-width: 100%;
+    }
+    .navbar {
+        padding: 15px 30px;
+    }
+    .navbar .nav-links a {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .nav-links a {
+        margin: 10px 0;
+    }
+    .container {
+        padding: 20px;
+    }
+    footer {
+        flex-direction: column;
+        padding: 20px;
+    }
+    footer .logo-area, footer > div {
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card h2 {
+        font-size: 20px;
+    }
+    .card p {
+        font-size: 14px;
+    }
+    #music-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+    }
+}
+        /* Ваши существующие стили остаются без изменений */
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            background-color: #FFE4E0;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-style: italic;
+            color: #B22222;
+            text-decoration: none;
+        }
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .nav-links a {
+            margin-left: 30px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-links a:hover {
+            color: #B22222;
+        }
+        .navbar .register-icon {
+            margin-left: 30px;
+            font-size: 22px;
+            color: #B22222;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        .navbar .register-icon:hover {
+            transform: scale(1.2);
+            color: #D84040;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 100px auto;
+            background-color: #FFF6F5;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            text-align: center;
+        }
+        .login-container h2 {
+            color: #B22222;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+        .login-container label {
+            display: block;
+            text-align: left;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .login-container input:focus {
+            border-color: #B22222;
+            outline: none;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #B22222;
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .login-container button:hover {
+            background-color: #D84040;
+        }
+        .login-container p {
+            margin-top: 15px;
+            color: #333;
+        }
+        .login-container a {
+            color: #B22222;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: red;
+            background-color: #FFE6E6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border: 1px solid red;
+        }
+
+        /* Остальные стили остаются без изменений */
+    </style>
+</head>
+<body>
+    <!-- 🔹 Навигация с иконкой регистрации -->
+    <nav class="navbar">
+        <a href="/" class="logo">SHAMSHYRAQ</a>
+        <div class="nav-links">
+            <a href="/about">Біз туралы</a>
+            <a href="/hope">Үміт бағы</a>
+            <a href="/voices">Дауыстар алаңы</a>
+            <!-- 👤 Иконка регистрации -->
+            <a href="/login" class="register-icon" title="Кіру">👤</a>
+        </div>
+    </nav>
+
+    <!-- 🔹 Форма входа -->
+    <div class="login-container">
+        <h2>Кіру</h2>
+
+        {% if error %}
+        <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <!-- Измените action на /login и method на post -->
+        <form method="post" action="/login">
+            <label for="email">Электронды пошта:</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   placeholder="example@gmail.com"
+                   value="{{ email | default('') }}"
+                   required>
+
+            <label for="password">Құпия сөз:</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   placeholder="••••••••"
+                   required>
+
+            <button type="submit">Кіру</button>
+        </form>
+        <p>Тіркелгіңіз жоқ па? <a href="/register">Тіркелу</a></p>
+    </div>
+
+    <!-- 🔹 Подвал и музыка - без изменений -->
+    <footer>
+        <!-- Ваш существующий футер -->
+    </footer>
+
+    <button id="music-btn">🎵</button>
+    <audio id="background-music" loop>
+        <source src="/static/audiobq.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const musicBtn = document.getElementById('music-btn');
+        const music = document.getElementById('background-music');
+        let isPlaying = false;
+
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                music.pause();
+                musicBtn.textContent = '🔇';
+            } else {
+                music.play();
+                musicBtn.textContent = '🎵';
+            }
+            isPlaying = !isPlaying;
+        });
+    </script>
+</body>
+</html>
